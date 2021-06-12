@@ -30,10 +30,10 @@ export class PersonComponent implements OnInit {
 persons: Array<PersonModel> = []
 
   favouriteColours = [
-    { id: 1, value: 'Rojo' },
-    { id: 2, value: 'Azul' },
-    { id: 3, value: 'Amarillo' },
-    { id: 4, value: 'Verde' }
+    { id: "Rojo", value: 'Rojo' },
+    { id: "Azul", value: 'Azul' },
+    { id: "Amarillo", value: 'Amarillo' },
+    { id: "Verde", value: 'Verde' }
   ];
 
   constructor(public personService: PersonService) { }
@@ -61,43 +61,56 @@ persons: Array<PersonModel> = []
 
       this.person.birthday = `${day}/${month}/${year}`
 
+      let _that = this
+      this.personService.registerPerson(this.person ).subscribe(( res )=>{
+        this.personService.getPersons().subscribe(( data: Array<PersonModel>)=>{
+          _that.persons = data 
+        })
+      })
+
       if(ageNum > 0 && ageNum <= 125){
       this.persons.push( this.person )
       }
-      this.person = {
-        _id: "",
-        name: "",
-        surnames: "",
-        age: "",
-        dni: "",
-        birthday: new Date(),
-        favouriteColour: "",
-        sex: "",
-        notes: ""
-      }
-
+      
+      
     }
     else{
       this.persons[ this.position ] = this.person
-      this.do = 'insert'
+     
+        this.do = 'insert'
+  
+    
     }
 
+    form.resetForm()
+  
+  }
     
 
-  
-  }
-    // form.resetForm()
-  
 
+  delete( id: string)    : void {
 
-  delete( delPosition : number )    : void {
-    this.persons.splice( delPosition , 1 )
-  }
-  update( upPosition : number ) : void {
-    this.person  = this.persons[ upPosition ];
-    this.do   = 'update'
-    this.position = upPosition
-  }
+    let _that = this
+    this.personService.deletePerson(`${id}`).subscribe(( res )=>{
+      this.personService.getPersons().subscribe(( data: Array<PersonModel>)=>{
+        _that.persons = data 
+      })
+  })
 }
+
+  update( upPosition: number ) : void {
+    this.person  = this.persons[ upPosition ];
+   
+    this.position = upPosition
+  
+  }
+
+  
+   
+  }
+  
+
+
+
 
 

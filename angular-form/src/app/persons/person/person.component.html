@@ -30,10 +30,10 @@
         <div class="add-bottom-padding">
           <mat-radio-group aria-label="Select an option" [ngModelOptions]="{standalone: true}"
             [(ngModel)]="person.sex">
-            <mat-radio-button value="1">Hombre</mat-radio-button> &nbsp;&nbsp;
-            <mat-radio-button value="2">Mujer</mat-radio-button> &nbsp;&nbsp;
-            <mat-radio-button value="3">Mujer</mat-radio-button>  &nbsp;&nbsp;
-            <mat-radio-button value="4">No especificado</mat-radio-button>
+            <mat-radio-button value="Hombre">Hombre</mat-radio-button> &nbsp;&nbsp;
+            <mat-radio-button value="Mujer">Mujer</mat-radio-button> &nbsp;&nbsp;
+            <mat-radio-button value="Otro">Otro</mat-radio-button>  &nbsp;&nbsp;
+            <mat-radio-button value="No especificado">No especificado</mat-radio-button>
           </mat-radio-group><br>
         </div>
         <mat-form-field>
@@ -81,11 +81,11 @@
 
 <div>
   <mat-card class="card" style="background-color: rgb(124, 226, 93);">
-    <h2 class="titulo">Lista de personos</h2>
+    <h2 class="titulo">Lista de personas</h2>
 
     <mat-list>
-
-      <mat-list-item *ngFor="let cont of persons; let i = index">
+     
+      <mat-list-item *ngFor="let cont of persons, let i = index">
         <div class="contactos">
           <mat-list-item>{{ cont.name }} {{ cont.surnames }}</mat-list-item>
           <mat-list-item>{{ cont.age}}</mat-list-item>
@@ -98,9 +98,10 @@
         <div class="botones">
           <mat-divider></mat-divider>
           <button class="button" mat-flat-button color="primary" (click)=" update( i )">Actualizar</button>
-          <button class="button" mat-flat-button color="warn" (click)=" delete( i )">Borrar</button>
+          <button class="button" mat-flat-button color="warn" (click)=" delete( cont._id )">Borrar</button>
         </div>
-      </mat-list-item>
+    
+    </mat-list-item>
 
 
     </mat-list>
