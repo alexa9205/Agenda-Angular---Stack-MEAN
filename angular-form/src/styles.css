@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; 
+    font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-color: rgb(231, 214, 176);
+}
+
+.controles-container{
+    font-size: 16px;
+}
+.card h3,
+.card .titulo{
+    font-size: 20px;
+    text-align: center;
+    text-decoration: underline;
+    font-weight: 600;
+}
+
+.button-row button{
+    box-shadow: 3px 4px 0px 0px #1564ad;
+	background:linear-gradient(to bottom, #79bbff 5%, #378de5 100%);
+	background-color:#79bbff;
+	border-radius:5px;
+	border:1px solid #337bc4;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-family:Arial;
+	font-size:17px;
+	font-weight:bold;
+	padding:5px 21px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #528ecc;
+    }
+  .button-row button:hover {
+    background:linear-gradient(to bottom, #378de5 5%, #79bbff 100%);
+	background-color:#378de5;
+    }
+  .button-row button:active {
+    position:relative;
+	top:1px;
+    }
+
+
+mat-list {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+}
+mat-list .contactos{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 14px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    margin-bottom: 10px;
+}
+mat-list .botones{
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+mat-card .datos{
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+
