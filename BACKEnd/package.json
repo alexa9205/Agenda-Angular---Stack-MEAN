@@ -1,11 +1,11 @@
 {
-  "name": "formulario",
+  "name": "backend",
   "version": "1.0.0",
   "description": "",
   "main": "servidor.js",
   "scripts": {
-    "dev": "nodemon servidor.js",
-    "test": "node servidor.js"
+    "dev": "node servidor.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
