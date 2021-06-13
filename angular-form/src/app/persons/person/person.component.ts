@@ -35,6 +35,7 @@ persons: Array<PersonModel> = []
     { id: "Amarillo", value: 'Amarillo' },
     { id: "Verde", value: 'Verde' }
   ];
+  filter: any;
 
   constructor(public personService: PersonService) { }
 
@@ -61,18 +62,29 @@ persons: Array<PersonModel> = []
 
       this.person.birthday = `${day}/${month}/${year}`
 
+      if(ageNum > 0 && ageNum <= 125){
+        this.persons.push( this.person )
+        }
+        
+     
+        if(form.value._id){ 
+
+           let _that = this
+        this.personService.editPerson(form.value).subscribe(( res )=>{
+          this.personService.getPersons().subscribe(( data: Array<PersonModel>)=>{
+            _that.persons = data 
+          })
+        })
+        this.person = new PersonModel()
+    }  else { 
       let _that = this
       this.personService.registerPerson(this.person ).subscribe(( res )=>{
         this.personService.getPersons().subscribe(( data: Array<PersonModel>)=>{
           _that.persons = data 
         })
       })
+    }
 
-      if(ageNum > 0 && ageNum <= 125){
-      this.persons.push( this.person )
-      }
-      
-      
     }
     else{
       this.persons[ this.position ] = this.person
@@ -85,11 +97,13 @@ persons: Array<PersonModel> = []
     form.resetForm()
   
   }
+  // resetForm(form: NgForm) {
+  //   throw new Error('Method not implemented.');
+  // }
     
 
 
   delete( id: string)    : void {
-
     let _that = this
     this.personService.deletePerson(`${id}`).subscribe(( res )=>{
       this.personService.getPersons().subscribe(( data: Array<PersonModel>)=>{
@@ -98,19 +112,18 @@ persons: Array<PersonModel> = []
   })
 }
 
-  update( upPosition: number ) : void {
+  update( upPosition: number, id: string ) : void {
     this.person  = this.persons[ upPosition ];
-   
     this.position = upPosition
+    this.personService.person = this.person;
+
+  
+  }
   
   }
 
   
    
-  }
   
-
-
-
-
+  
 

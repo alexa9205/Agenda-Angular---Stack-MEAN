@@ -23,11 +23,13 @@ const personSchema = new mongoose.Schema({
     },
     favouriteColour: {
         type: String,
-        required: true,   
+        required: true,
+        enum:["None", "Rojo", "Azul", "Verde", "Amarillo"]   
     },
     sex: {
         type: String,
         required: true,
+        enum:["Hombre", "Mujer", "Otro", "No especificado"]
     },
     notes: {
         type: String,

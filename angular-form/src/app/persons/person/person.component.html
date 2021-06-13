@@ -67,7 +67,7 @@
   </mat-grid-list>
 </form>
 
-<mat-card class="card" style="background-color: burlywood;">
+<mat-card class="card" style="background-color: rgb(219, 167, 230);">
   <h3>Personas</h3>
   <p><b>Nombre:</b> {{person.name}}</p>
   <p><b>Apellido:</b> {{person.surnames}}</p>
@@ -80,14 +80,14 @@
 </mat-card><br>
 
 <div>
-  <mat-card class="card" style="background-color: rgb(124, 226, 93);">
+  <mat-card class="card" style="background-color: rgb(180, 228, 235);">
     <h2 class="titulo">Lista de personas</h2>
 
     <mat-list>
      
       <mat-list-item *ngFor="let cont of persons, let i = index">
         <div class="contactos">
-          <mat-list-item>{{ cont.name }} {{ cont.surnames }}</mat-list-item>
+          <mat-list-item><b>{{ cont.name }} {{ cont.surnames }}</b></mat-list-item>
           <mat-list-item>{{ cont.age}}</mat-list-item>
           <mat-list-item>{{ cont.dni}}</mat-list-item>
           <mat-list-item>{{ cont.birthday }}</mat-list-item>
@@ -97,7 +97,7 @@
         </div>
         <div class="botones">
           <mat-divider></mat-divider>
-          <button class="button" mat-flat-button color="primary" (click)=" update( i )">Actualizar</button>
+          <button class="button" mat-flat-button color="primary" (click)=" update( i, cont._id )">Actualizar</button>
           <button class="button" mat-flat-button color="warn" (click)=" delete( cont._id )">Borrar</button>
         </div>
     

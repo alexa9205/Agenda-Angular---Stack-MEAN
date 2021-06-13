@@ -32,4 +32,3 @@ export class PersonModel{
     sex: string;
     notes: string
 }
-

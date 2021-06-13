@@ -22,22 +22,22 @@ export class PersonService {
 
 persons: Array<PersonModel> = []
 
-  readonly URL_API = "http://localhost:5000/person/";
+  readonly URL_API = "http://localhost:3000/person";
 
   constructor(private http: HttpClient) {
    this.person =  new PersonModel();
   }
 
   registerPerson(person: PersonModel) {
-    return this.http.post(this.URL_API, person);
+    return this.http.post(this.URL_API + `/`, person);
   }
 
   getPersons() {
-    return this.http.get<PersonModel[]>(this.URL_API);
+    return this.http.get<PersonModel[]>(this.URL_API + `/`);
   }
 
-  editPerson(person: PersonModel) {
-    return this.http.put(this.URL_API + `/${person._id}`, person);
+  editPerson(_id:string) {
+    return this.http.put(this.URL_API + `/${this.person._id}`, this.person);
   }
 
   deletePerson(_id: string) {

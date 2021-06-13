@@ -16,7 +16,7 @@ const valid_user = [
         .isLength({ min: 9, max: 9 })
         .isAlphanumeric(),
     check('Cumpleanos', 'El cumpleaños indicado debe especificarse en formato aaaa-mm-dd')
-        .isDate(),
+        .isISO8601(),
     check('ColorFav', 'El color favorito indicado debe tener al menos 3 caracteres y no puede incluir números')
         .isLength({ min: 3 })
         .isAlpha(locale = 'es-ES', { ignore: '- /' }),
@@ -25,7 +25,6 @@ const valid_user = [
   ];
 
 router.get('/', personCtrl.getPersons)
-router.get('/:id', personCtrl.getPerson)
 router.post('/', valid_user, personCtrl.createPerson)
 router.put('/:id', valid_user, personCtrl.editPerson)
 router.delete('/:id', personCtrl.deletePerson)
